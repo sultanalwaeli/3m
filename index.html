@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>العرض التفاعلي - التحول الرقمي في الإدارة المدرسية (موثق كاملاً)</title>
+    <title>العرض التفاعلي - التحول الرقمي في الإدارة المدرسية (النسخة النهائية)</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -52,6 +52,7 @@
         /* ========== نافذة التوثيق المنبثقة ========== */
         .citation-tooltip{display:none;background:var(--primary-dark);color:white;padding:15px;border-radius:20px;font-size:14px;line-height:1.7;margin-top:12px;border-right:5px solid var(--secondary);box-shadow:var(--shadow-lg);}
         .definition-item.active .citation-tooltip{display:block;}
+        .star-reference.active .citation-tooltip{display:block;}
 
         /* ========== رؤية الوزارة ========== */
         .vision-box{background:linear-gradient(145deg,#0a2a5a,#123e7a);border-radius:40px;padding:25px;margin:25px 0 10px;border:3px solid var(--secondary);color:white;}
@@ -92,7 +93,7 @@
 <body>
     <canvas id="canvas-bg"></canvas>
     <div class="slide-progress-bar"><div class="slide-progress-fill" id="progress-fill"></div></div>
-    <div class="slide-counter"><span class="current" id="current-slide">01</span><span class="total">/ 10</span></div>
+    <div class="slide-counter"><span class="current" id="current-slide">01</span><span class="total">/ 09</span></div>
     <div class="nav-arrows"><div class="nav-arrow" id="prev-slide"><i class="fas fa-arrow-right"></i></div><div class="nav-arrow" id="next-slide"><i class="fas fa-arrow-left"></i></div></div>
 
     <div class="swiper presentation-swiper">
@@ -117,11 +118,11 @@
                     <div class="card-3d"><i class="fas fa-lightbulb" style="font-size:40px;color:var(--secondary)"></i><h3>المفهوم</h3></div>
                     <div class="card-3d"><i class="fas fa-chart-line" style="font-size:40px;color:var(--secondary)"></i><h3>التحديات والفرص</h3></div>
                     <div class="card-3d"><i class="fas fa-laptop" style="font-size:40px;color:var(--secondary)"></i><h3>نموذج تطبيقي</h3></div>
-                    <div class="card-3d"><i class="fas fa-graduation-cap" style="font-size:40px;color:var(--secondary)"></i><h3>دراسات ومقترحات</h3></div>
+                    <div class="card-3d"><i class="fas fa-graduation-cap" style="font-size:40px;color:var(--secondary)"></i><h3>مقترحات ومراجع</h3></div>
                 </div>
             </div></div>
 
-            <!-- SLIDE 3: المفهوم مع تعريفات موثقة (تعمل عند الضغط) -->
+            <!-- SLIDE 3: المفهوم مع تعريفات موثقة -->
             <div class="swiper-slide"><div class="slide-content">
                 <h2 class="section-header">مفهوم التحول الرقمي</h2>
                 <div class="definitions-container">
@@ -160,7 +161,7 @@
                 </div>
             </div></div>
 
-            <!-- SLIDE 4: التحديات والفرص + رؤية الوزارة (موجودة ومرئية) -->
+            <!-- SLIDE 4: التحديات والفرص + رؤية الوزارة -->
             <div class="swiper-slide"><div class="slide-content">
                 <h2 class="section-header">التحديات والفرص</h2>
                 <div class="comparison-container">
@@ -183,7 +184,7 @@
                         </ul>
                     </div>
                 </div>
-                <!-- رؤية الوزارة واضحة الآن -->
+                <!-- رؤية الوزارة واضحة -->
                 <div class="vision-box">
                     <div class="vision-title">رؤية وزارة التربية والتعليم: التعليم المدمج بالتقانة</div>
                     <div class="vision-text">
@@ -203,30 +204,7 @@
                 </div>
             </div></div>
 
-            <!-- SLIDE 6: الدراسات الداعمة (مراجع موثقة) -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">الدراسات الداعمة</h2>
-                <div class="references-galaxy">
-                    <div class="star-reference definition-trigger" data-citation="OECD (2023). 'Digital Education Outlook 2023: Towards an Effective Digital Transformation'. OECD Publishing, Paris. ISBN: 978-92-64-36871-0.">
-                        <i class="fas fa-chart-line"></i><h3>OECD 2023</h3><p>توجهات التحول الرقمي</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <div class="star-reference definition-trigger" data-citation="وزارة التربية والتعليم (2024). 'الخطة الاستراتيجية للتعليم 2040'. سلطنة عمان.">
-                        <i class="fas fa-flag"></i><h3>وزارة التعليم 2040</h3><p>الاستراتيجية الوطنية</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <div class="star-reference definition-trigger" data-citation="هيئة تقنية المعلومات (2023). 'إطار الحوكمة الرقمية'. سلطنة عمان.">
-                        <i class="fas fa-network-wired"></i><h3>هيئة تقنية المعلومات</h3><p>الحوكمة الرقمية</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <div class="star-reference definition-trigger" data-citation="Boeskens, L. and K. Meyer (2025). OECD Education Working Papers, No. 328.">
-                        <i class="fas fa-file-alt"></i><h3>OECD 2025</h3><p>Working Paper 328</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                </div>
-            </div></div>
-
-            <!-- SLIDE 7: المقترحات -->
+            <!-- SLIDE 6: المقترحات (كانت سابقاً الدراسات) -->
             <div class="swiper-slide"><div class="slide-content">
                 <h2 class="section-header">مقترحات التطوير</h2>
                 <div class="timeline-premium">
@@ -238,35 +216,55 @@
                 </div>
             </div></div>
 
-            <!-- SLIDE 8: الشكر -->
+            <!-- SLIDE 7: الشكر -->
             <div class="swiper-slide"><div class="slide-content text-center">
                 <i class="fas fa-heart heart-icon"></i>
                 <h2 class="thanks-title">شكراً لحسن استماعكم</h2>
             </div></div>
 
-            <!-- SLIDE 9: المراجع الكاملة (موثقة وتظهر عند الضغط) -->
+            <!-- SLIDE 8: المراجع الكاملة (عند الضغط ينبثق التوثيق) -->
             <div class="swiper-slide"><div class="slide-content">
                 <h2 class="section-header">المراجع الكاملة</h2>
                 <div class="references-galaxy">
-                    <div class="star-reference definition-trigger" data-citation="Boeskens, L. & Meyer, K. (2025). Policies for the digital transformation of school education. OECD Education Working Papers, No. 328. Paris: OECD Publishing. https://doi.org/10.1787/19939019">
-                        <i class="fas fa-file-contract"></i><h3>OECD (2025)</h3><p>Working Paper No. 328</p><div class="citation-tooltip"></div>
+                    <!-- المرجع 1: OECD 2025 -->
+                    <div class="star-reference definition-trigger" data-citation="Boeskens, L. & Meyer, K. (2025). Policies for the digital transformation of school education: Evidence from the Policy Survey on School Education in the Digital Age. OECD Education Working Papers, No. 328. Paris: OECD Publishing. https://doi.org/10.1787/19939019">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>OECD (2025)</h3>
+                        <p>Working Paper No. 328</p>
+                        <div class="citation-tooltip"></div>
                     </div>
-                    <div class="star-reference definition-trigger" data-citation="OECD (2023). Digital Education Outlook 2023: Towards an Effective Digital Transformation. Paris: OECD Publishing. Retrieved from: https://www.oecd.org">
-                        <i class="fas fa-book"></i><h3>OECD (2023)</h3><p>Digital Education Outlook</p><div class="citation-tooltip"></div>
+                    <!-- المرجع 2: OECD 2023 -->
+                    <div class="star-reference definition-trigger" data-citation="OECD (2023). Digital Education Outlook 2023: Towards an Effective Digital Transformation. Paris: OECD Publishing. Retrieved from: https://www.oecd.org/en/publications/country-digital-education-ecosystems-and-governance_906134d4-en.html">
+                        <i class="fas fa-book"></i>
+                        <h3>OECD (2023)</h3>
+                        <p>Digital Education Outlook</p>
+                        <div class="citation-tooltip"></div>
                     </div>
-                    <div class="star-reference definition-trigger" data-citation="وزارة التربية والتعليم (2024). الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس. الوثيقة الوطنية، مسقط، سلطنة عمان.">
-                        <i class="fas fa-flag"></i><h3>وزارة التعليم (2024)</h3><p>رؤية عمان 2040</p><div class="citation-tooltip"></div>
+                    <!-- المرجع 3: وزارة التربية والتعليم عمان 2024 -->
+                    <div class="star-reference definition-trigger" data-citation="وزارة التربية والتعليم، سلطنة عمان (2024). الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس. الوثيقة الوطنية للتحول الرقمي في التعليم، مسقط، سلطنة عمان.">
+                        <i class="fas fa-flag"></i>
+                        <h3>وزارة التعليم (2024)</h3>
+                        <p>رؤية عمان 2040</p>
+                        <div class="citation-tooltip"></div>
                     </div>
-                    <div class="star-reference definition-trigger" data-citation="هيئة تقنية المعلومات (2023). إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي. مسقط، سلطنة عمان.">
-                        <i class="fas fa-network-wired"></i><h3>هيئة تقنية المعلومات (2023)</h3><p>الحوكمة الرقمية</p><div class="citation-tooltip"></div>
+                    <!-- المرجع 4: هيئة تقنية المعلومات عمان 2023 -->
+                    <div class="star-reference definition-trigger" data-citation="هيئة تقنية المعلومات، سلطنة عمان (2023). إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي. مسقط، سلطنة عمان.">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>هيئة تقنية المعلومات (2023)</h3>
+                        <p>الحوكمة الرقمية</p>
+                        <div class="citation-tooltip"></div>
                     </div>
+                    <!-- المرجع 5: سلطان الوائلي 2025 -->
                     <div class="star-reference definition-trigger" data-citation="الوائلي، سلطان بن علي (2025). مفهوم شخصي للتحول الرقمي في الإدارة المدرسية. مخطوطة غير منشورة، مدرسة محمد بن سليمان الغافري، سلطنة عمان.">
-                        <i class="fas fa-user-graduate"></i><h3>سلطان الوائلي (2025)</h3><p>مفهوم شخصي</p><div class="citation-tooltip"></div>
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>سلطان الوائلي (2025)</h3>
+                        <p>مفهوم شخصي</p>
+                        <div class="citation-tooltip"></div>
                     </div>
                 </div>
             </div></div>
 
-            <!-- SLIDE 10: الخاتمة -->
+            <!-- SLIDE 9: الخاتمة -->
             <div class="swiper-slide"><div class="slide-content text-center">
                 <i class="fas fa-star" style="font-size:80px; color:var(--secondary);"></i>
                 <h2 style="font-size:48px; color:var(--primary);">معاً نحو مستقبل رقمي</h2>
@@ -284,16 +282,22 @@
             navigation:{nextEl:'#next-slide', prevEl:'#prev-slide'},
             on:{slideChange:updateProgress, init:updateProgress}
         });
-        function updateProgress(){let c=swiper.activeIndex+1,t=swiper.slides.length; document.getElementById('current-slide').textContent=c.toString().padStart(2,'0'); document.getElementById('progress-fill').style.width=(c/t)*100+'%';}
+        function updateProgress(){
+            let c=swiper.activeIndex+1, t=swiper.slides.length;
+            document.getElementById('current-slide').textContent=c.toString().padStart(2,'0');
+            document.getElementById('progress-fill').style.width=(c/t)*100+'%';
+        }
         window.addEventListener('resize',()=>swiper.update());
 
-        // آلية عرض التوثيق عند الضغط (تعمل الآن بشكل موثوق)
+        // آلية عرض التوثيق عند الضغط (تعمل لجميع العناصر)
         document.querySelectorAll('.definition-trigger').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.stopPropagation();
                 // إغلاق أي نوافذ مفتوحة أخرى
-                document.querySelectorAll('.definition-trigger').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
+                document.querySelectorAll('.definition-trigger').forEach(el => {
+                    if(el !== this) el.classList.remove('active');
+                });
+                this.classList.toggle('active');
                 // تعبئة محتوى التوثيق إذا كان فارغاً
                 const tooltip = this.querySelector('.citation-tooltip');
                 if(tooltip && tooltip.innerHTML.trim() === '') {

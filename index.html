@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
@@ -19,8 +17,10 @@
             --gradient-1: linear-gradient(145deg, #0A2472, #1E4A8A, #3A7CA5);
             --gradient-2: linear-gradient(145deg, #E6B91E, #F9D342);
             --gradient-3: linear-gradient(145deg, #1E4A8A, #00A896);
-            --shadow-lg: 0 30px 70px rgba(0,0,0,0.2); --shadow-gold: 0 20px 40px rgba(230,185,30,0.25);
-            --border-radius-md: 35px; --border-radius-lg: 50px;
+            --shadow-lg: 0 30px 70px rgba(0,0,0,0.2); 
+            --shadow-gold: 0 20px 40px rgba(230,185,30,0.25);
+            --border-radius-md: 35px; 
+            --border-radius-lg: 50px;
         }
         html,body{overflow:hidden;height:100%;width:100%;}
         body{font-family:'Tajawal',sans-serif;background:var(--primary-dark);}
@@ -33,293 +33,587 @@
         .nav-arrow:hover{background:var(--gradient-2);color:var(--primary-dark);transform:scale(1.1) rotate(360deg);}
         .swiper{width:100%;height:100vh;}
         .swiper-slide{display:flex;align-items:center;justify-content:center;padding:10px;}
-        .slide-content{max-width:1400px;width:100%;max-height:92vh;overflow-y:auto;padding:25px;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-radius:var(--border-radius-md);border:2px solid rgba(230,185,30,0.3);-webkit-overflow-scrolling:touch;}
-        .section-header{font-size:32px;font-weight:900;color:var(--primary-dark);margin-bottom:20px;display:inline-block;border-bottom:4px solid var(--secondary);padding-bottom:5px;}
-        .badge-3d{width:120px;height:120px;margin:0 auto;position:relative;transform-style:preserve-3d;animation:float3D 5s infinite;}
-        @keyframes float3D{0%,100%{transform:translateY(0) rotateY(0deg);}50%{transform:translateY(-10px) rotateY(10deg);}}
-        .badge-3d .front,.badge-3d .back{position:absolute;width:100%;height:100%;border-radius:50%;background:white;border:5px solid var(--secondary);display:flex;align-items:center;justify-content:center;backface-visibility:hidden;}
+        .slide-content{
+            max-width:1400px;
+            width:100%;
+            max-height:92vh;
+            overflow-y:auto;
+            padding:25px;
+            background:rgba(255,255,255,0.97);
+            backdrop-filter:blur(20px);
+            border-radius:var(--border-radius-md);
+            border:2px solid rgba(230,185,30,0.3);
+            -webkit-overflow-scrolling:touch;
+        }
+        .section-header{
+            font-size:32px;
+            font-weight:900;
+            color:var(--primary-dark);
+            margin-bottom:20px;
+            display:inline-block;
+            border-bottom:4px solid var(--secondary);
+            padding-bottom:5px;
+        }
+        .badge-3d{
+            width:120px;
+            height:120px;
+            margin:0 auto;
+            position:relative;
+            transform-style:preserve-3d;
+            animation:float3D 5s infinite;
+        }
+        @keyframes float3D{
+            0%,100%{transform:translateY(0) rotateY(0deg);}
+            50%{transform:translateY(-10px) rotateY(10deg);}
+        }
+        .badge-3d .front,.badge-3d .back{
+            position:absolute;
+            width:100%;
+            height:100%;
+            border-radius:50%;
+            background:white;
+            border:5px solid var(--secondary);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            backface-visibility:hidden;
+        }
         .badge-3d .back{transform:rotateY(180deg);border-color:var(--primary);}
         .badge-image{max-width:70%;max-height:70%;object-fit:contain;}
 
         /* ========== التعريفات الموثقة ========== */
         .definitions-container{margin-bottom:20px;}
-        .definition-item{background:#f0f5ff;padding:18px;border-radius:30px;margin-bottom:15px;border-right:6px solid var(--secondary);cursor:pointer;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);}
-        .definition-item:hover{transform:translateX(-5px);box-shadow:0 15px 30px rgba(230,185,30,0.15);}
-        .definition-text{font-size:18px;font-weight:500;color:var(--primary-dark);margin-bottom:8px;line-height:1.5;}
-        .definition-source{font-size:16px;color:var(--accent);font-weight:700;background:rgba(0,168,150,0.1);padding:4px 15px;border-radius:30px;display:inline-block;border:1px dashed var(--accent);}
+        .definition-item{
+            background:#f0f5ff;
+            padding:18px;
+            border-radius:30px;
+            margin-bottom:15px;
+            border-right:6px solid var(--secondary);
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 5px 15px rgba(0,0,0,0.05);
+        }
+        .definition-item:hover{
+            transform:translateX(-5px);
+            box-shadow:0 15px 30px rgba(230,185,30,0.15);
+        }
+        .definition-text{
+            font-size:18px;
+            font-weight:500;
+            color:var(--primary-dark);
+            margin-bottom:8px;
+            line-height:1.5;
+        }
+        .definition-source{
+            font-size:16px;
+            color:var(--accent);
+            font-weight:700;
+            background:rgba(0,168,150,0.1);
+            padding:4px 15px;
+            border-radius:30px;
+            display:inline-block;
+            border:1px dashed var(--accent);
+        }
         .my-definition{background:#e3eeff;border-right-color:var(--primary);}
 
         /* ========== نافذة التوثيق المنبثقة ========== */
-        .citation-tooltip{display:none;background:var(--primary-dark);color:white;padding:15px;border-radius:20px;font-size:14px;line-height:1.7;margin-top:12px;border-right:5px solid var(--secondary);box-shadow:var(--shadow-lg);}
-        .definition-item.active .citation-tooltip{display:block;}
-        .star-reference.active .citation-tooltip{display:block;}
+        .citation-box{
+            display: none;
+            background: var(--primary-dark);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 15px;
+            line-height: 1.8;
+            border-right: 5px solid var(--secondary);
+            box-shadow: var(--shadow-lg);
+            direction: ltr;
+            text-align: left;
+            word-break: break-word;
+            font-family: 'Cairo', monospace;
+        }
+        .citation-box.arabic{
+            direction: rtl;
+            text-align: right;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .definition-item.active .citation-box,
+        .ref-card.active .citation-box{
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* ========== رؤية الوزارة ========== */
-        .vision-box{background:linear-gradient(145deg,#0a2a5a,#123e7a);border-radius:40px;padding:25px;margin:25px 0 10px;border:3px solid var(--secondary);color:white;}
-        .vision-title{font-size:24px;font-weight:900;color:var(--secondary);margin-bottom:15px;text-align:center;}
-        .vision-text{font-size:18px;line-height:1.7;text-align:center;}
+        .vision-box{
+            background:linear-gradient(145deg,#0a2a5a,#123e7a);
+            border-radius:40px;
+            padding:25px;
+            margin:25px 0 10px;
+            border:3px solid var(--secondary);
+            color:white;
+        }
+        .vision-title{
+            font-size:24px;
+            font-weight:900;
+            color:var(--secondary);
+            margin-bottom:15px;
+            text-align:center;
+        }
+        .vision-text{
+            font-size:18px;
+            line-height:1.7;
+            text-align:center;
+        }
         .vision-text strong{color:var(--secondary);}
 
-        /* ========== بطاقات المراجع في شريحة المراجع ========== */
-        .references-galaxy{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px;}
-        .star-reference{background:white;padding:20px;border-radius:30px;text-align:center;cursor:pointer;border:2px solid transparent;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);}
-        .star-reference:hover{transform:translateY(-5px);border-color:var(--secondary);}
-        .star-reference i{font-size:40px;color:var(--secondary);margin-bottom:10px;}
-        .star-reference h3{font-size:18px;color:var(--primary);margin-bottom:5px;}
-        .star-reference p{font-size:13px;color:var(--gray);}
-        .star-reference.active{border-color:var(--secondary);background:#f5f9ff;}
-        .star-reference .citation-tooltip{font-size:13px;text-align:right;}
+        /* ========== بطاقات المراجع ========== */
+        .references-galaxy{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:20px;
+            margin-top:20px;
+        }
+        .ref-card{
+            background:white;
+            padding:25px 20px;
+            border-radius:30px;
+            text-align:center;
+            cursor:pointer;
+            border:2px solid #e0e0e0;
+            transition:0.3s;
+            box-shadow:0 5px 15px rgba(0,0,0,0.05);
+        }
+        .ref-card:hover{
+            transform:translateY(-5px);
+            border-color:var(--secondary);
+            box-shadow:0 15px 30px rgba(230,185,30,0.15);
+        }
+        .ref-card i{
+            font-size:45px;
+            color:var(--secondary);
+            margin-bottom:15px;
+        }
+        .ref-card h3{
+            font-size:20px;
+            color:var(--primary-dark);
+            margin-bottom:5px;
+        }
+        .ref-card p{
+            font-size:14px;
+            color:#666;
+            margin-bottom:10px;
+        }
+        .ref-card.active{
+            border-color:var(--secondary);
+            background:#f5f9ff;
+        }
 
         /* ========== باقي الأنماط ========== */
-        .comparison-container{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0;}
-        .comparison-box{padding:25px;border-radius:40px;color:white;min-height:350px;}
+        .comparison-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+            margin:20px 0;
+        }
+        .comparison-box{
+            padding:25px;
+            border-radius:40px;
+            color:white;
+            min-height:350px;
+        }
         .comparison-box.challenges{background:linear-gradient(145deg,#0A2472,#1A3A6E);}
         .comparison-box.opportunities{background:linear-gradient(145deg,#1E4A8A,#007a6a);}
-        .box-title{font-size:28px;font-weight:900;margin-bottom:20px;color:var(--secondary);}
-        .comparison-list{list-style:none;}
-        .comparison-list li{margin:15px 0;font-size:18px;display:flex;align-items:center;gap:10px;}
-        .objective-card{background:var(--gradient-1);padding:30px;border-radius:45px;color:white;border:3px solid var(--secondary);}
-        .objective-title{font-size:32px;color:var(--secondary);margin-bottom:25px;}
-        .objective-list li{font-size:22px;margin:20px 0;}
-        .platform-universe{background:var(--gradient-1);padding:30px;border-radius:50px;border:4px solid var(--secondary);text-align:center;}
-        .timeline-premium{display:flex;justify-content:space-between;margin:40px 0;}
-        .timeline-node{width:120px;height:120px;border-radius:50%;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;border:4px solid var(--secondary);}
+        .box-title{
+            font-size:28px;
+            font-weight:900;
+            margin-bottom:20px;
+            color:var(--secondary);
+        }
+        .comparison-list{
+            list-style:none;
+        }
+        .comparison-list li{
+            margin:15px 0;
+            font-size:18px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+        .platform-universe{
+            background:var(--gradient-1);
+            padding:30px;
+            border-radius:50px;
+            border:4px solid var(--secondary);
+            text-align:center;
+        }
+        .timeline-premium{
+            display:flex;
+            justify-content:space-between;
+            margin:40px 0;
+        }
+        .timeline-node{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            background:white;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            border:4px solid var(--secondary);
+        }
         .heart-icon{font-size:100px;color:var(--secondary);}
         .thanks-title{font-size:48px;color:var(--primary);margin:20px 0;}
         .text-center{text-align:center;}
-        @media (max-width:768px){.comparison-container{grid-template-columns:1fr;}.timeline-premium{flex-wrap:wrap;gap:10px;}}
+        
+        @media (max-width:768px){
+            .comparison-container{grid-template-columns:1fr;}
+            .timeline-premium{flex-wrap:wrap;gap:10px;}
+            .references-galaxy{grid-template-columns:1fr;}
+        }
     </style>
 </head>
 <body>
     <canvas id="canvas-bg"></canvas>
     <div class="slide-progress-bar"><div class="slide-progress-fill" id="progress-fill"></div></div>
-    <div class="slide-counter"><span class="current" id="current-slide">01</span><span class="total">/ 09</span></div>
-    <div class="nav-arrows"><div class="nav-arrow" id="prev-slide"><i class="fas fa-arrow-right"></i></div><div class="nav-arrow" id="next-slide"><i class="fas fa-arrow-left"></i></div></div>
+    <div class="slide-counter">
+        <span class="current" id="current-slide">01</span>
+        <span class="total">/ 09</span>
+    </div>
+    <div class="nav-arrows">
+        <div class="nav-arrow" id="prev-slide"><i class="fas fa-arrow-right"></i></div>
+        <div class="nav-arrow" id="next-slide"><i class="fas fa-arrow-left"></i></div>
+    </div>
 
     <div class="swiper presentation-swiper">
         <div class="swiper-wrapper">
             <!-- SLIDE 1: Cover -->
-            <div class="swiper-slide"><div class="slide-content">
-                <div class="text-center">
-                    <div class="badge-3d"><div class="front"><img src="https://b.top4top.io/p_3704mdd1d1.png" class="badge-image"></div><div class="back"><img src="https://b.top4top.io/p_3704mdd1d1.png" class="badge-image"></div></div>
-                    <h1 style="font-size:48px; margin:20px 0"><span style="color:var(--primary-dark)">التحول الرقمي</span> <span style="color:var(--secondary)">في الإدارة المدرسية</span></h1>
-                    <div style="background:var(--gradient-1); color:white; padding:30px; border-radius:50px; border:3px solid var(--secondary);">
-                        <div style="font-size:32px; font-weight:900; color:var(--secondary)">سلطان بن علي الوائلي</div>
-                        <div style="font-size:20px">مساعد مدير مدرسة محمد بن سليمان الغافري</div>
-                        <div style="font-size:28px; background:rgba(255,255,255,0.2); padding:10px 25px; border-radius:40px; display:inline-block; margin-top:15px;">16101418</div>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <div class="text-center">
+                        <div class="badge-3d">
+                            <div class="front"><img src="https://b.top4top.io/p_3704mdd1d1.png" class="badge-image"></div>
+                            <div class="back"><img src="https://b.top4top.io/p_3704mdd1d1.png" class="badge-image"></div>
+                        </div>
+                        <h1 style="font-size:48px; margin:20px 0">
+                            <span style="color:var(--primary-dark)">التحول الرقمي</span> 
+                            <span style="color:var(--secondary)">في الإدارة المدرسية</span>
+                        </h1>
+                        <div style="background:var(--gradient-1); color:white; padding:30px; border-radius:50px; border:3px solid var(--secondary);">
+                            <div style="font-size:32px; font-weight:900; color:var(--secondary)">سلطان بن علي الوائلي</div>
+                            <div style="font-size:20px">مساعد مدير مدرسة محمد بن سليمان الغافري</div>
+                            <div style="font-size:28px; background:rgba(255,255,255,0.2); padding:10px 25px; border-radius:40px; display:inline-block; margin-top:15px;">16101418</div>
+                        </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
 
-            <!-- SLIDE 2: محاور -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">محاور العرض</h2>
-                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;">
-                    <div class="card-3d"><i class="fas fa-lightbulb" style="font-size:40px;color:var(--secondary)"></i><h3>المفهوم</h3></div>
-                    <div class="card-3d"><i class="fas fa-chart-line" style="font-size:40px;color:var(--secondary)"></i><h3>التحديات والفرص</h3></div>
-                    <div class="card-3d"><i class="fas fa-laptop" style="font-size:40px;color:var(--secondary)"></i><h3>نموذج تطبيقي</h3></div>
-                    <div class="card-3d"><i class="fas fa-graduation-cap" style="font-size:40px;color:var(--secondary)"></i><h3>مقترحات ومراجع</h3></div>
+            <!-- SLIDE 2: محاور العرض -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2 class="section-header">محاور العرض</h2>
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;">
+                        <div style="text-align:center; padding:20px; background:var(--gradient-1); border-radius:30px; color:white;">
+                            <i class="fas fa-lightbulb" style="font-size:40px;color:var(--secondary)"></i>
+                            <h3>المفهوم</h3>
+                        </div>
+                        <div style="text-align:center; padding:20px; background:var(--gradient-1); border-radius:30px; color:white;">
+                            <i class="fas fa-chart-line" style="font-size:40px;color:var(--secondary)"></i>
+                            <h3>التحديات والفرص</h3>
+                        </div>
+                        <div style="text-align:center; padding:20px; background:var(--gradient-1); border-radius:30px; color:white;">
+                            <i class="fas fa-laptop" style="font-size:40px;color:var(--secondary)"></i>
+                            <h3>نموذج تطبيقي</h3>
+                        </div>
+                        <div style="text-align:center; padding:20px; background:var(--gradient-1); border-radius:30px; color:white;">
+                            <i class="fas fa-graduation-cap" style="font-size:40px;color:var(--secondary)"></i>
+                            <h3>مقترحات ومراجع</h3>
+                        </div>
+                    </div>
                 </div>
-            </div></div>
+            </div>
 
             <!-- SLIDE 3: المفهوم مع تعريفات موثقة -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">مفهوم التحول الرقمي</h2>
-                <div class="definitions-container">
-                    <!-- OECD 2025 -->
-                    <div class="definition-item definition-trigger" data-citation="Boeskens, L. and K. Meyer (2025). 'Policies for the digital transformation of school education: Evidence from the Policy Survey on School Education in the Digital Age', OECD Education Working Papers, No. 328, OECD Publishing, Paris. https://doi.org/10.1787/19939019">
-                        <div class="definition-text">"التحول الرقمي في التعليم هو إعادة تصميم جذرية للعمليات التربوية، ودمج التكنولوجيا ليس كأداة فحسب، بل كطريقة لإعادة تشكيل مناهج التدريس وعمليات التعلم والنظام البيئي التعليمي بأكمله ليكون أكثر فعالية."</div>
-                        <span class="definition-source">- OECD (2025)</span>
-                        <div class="citation-tooltip"></div>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2 class="section-header">مفهوم التحول الرقمي</h2>
+                    <div class="definitions-container">
+                        <!-- OECD 2025 -->
+                        <div class="definition-item" onclick="this.classList.toggle('active')">
+                            <div class="definition-text">"التحول الرقمي في التعليم هو إعادة تصميم جذرية للعمليات التربوية، ودمج التكنولوجيا ليس كأداة فحسب، بل كطريقة لإعادة تشكيل مناهج التدريس وعمليات التعلم والنظام البيئي التعليمي بأكمله ليكون أكثر فعالية."</div>
+                            <span class="definition-source">- OECD (2025)</span>
+                            <div class="citation-box">
+                                📚 Boeskens, L. and K. Meyer (2025). 'Policies for the digital transformation of school education: Evidence from the Policy Survey on School Education in the Digital Age', OECD Education Working Papers, No. 328, OECD Publishing, Paris. https://doi.org/10.1787/19939019
+                            </div>
+                        </div>
+                        
+                        <!-- وزارة التربية والتعليم عمان 2024 -->
+                        <div class="definition-item" onclick="this.classList.toggle('active')">
+                            <div class="definition-text">"التحول الرقمي في الإدارة المدرسية هو توظيف متكامل ومنهجي للتقنيات الرقمية لتحسين جودة العمليات التعليمية والإدارية، وتعزيز ثقافة الابتكار، وتمكين المتعلمين والمعلمين في بيئة تعليمية تفاعلية آمنة."</div>
+                            <span class="definition-source">- وزارة التربية والتعليم (عمان، 2024)</span>
+                            <div class="citation-box arabic">
+                                📚 وزارة التربية والتعليم، سلطنة عمان (2024). 'الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس'. الوثيقة الوطنية للتحول الرقمي في التعليم، مسقط، سلطنة عمان.
+                            </div>
+                        </div>
+                        
+                        <!-- هيئة تقنية المعلومات 2023 -->
+                        <div class="definition-item" onclick="this.classList.toggle('active')">
+                            <div class="definition-text">"التمكين الرقمي في القطاع التعليمي هو عملية دمج البنى التحتية التقنية والأنظمة المعلوماتية لخلق بيئة رقمية متكاملة تتيح الوصول للخدمات الإدارية والتعليمية بكفاءة وشفافية."</div>
+                            <span class="definition-source">- هيئة تقنية المعلومات (عمان، 2023)</span>
+                            <div class="citation-box arabic">
+                                📚 هيئة تقنية المعلومات، سلطنة عمان (2023). 'إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي'. مسقط، سلطنة عمان.
+                            </div>
+                        </div>
+                        
+                        <!-- سلطان الوائلي 2025 -->
+                        <div class="definition-item my-definition" onclick="this.classList.toggle('active')">
+                            <div class="definition-text">"التحول الرقمي في الإدارة المدرسية هو نقلة نوعية شاملة تعيد تشكيل الهيكل الإداري والمدرسي بأكمله، لخلق بيئة تفاعلية ذكية تركز على المتعلم وتواكب متطلبات العصر الرقمي."</div>
+                            <span class="definition-source">- سلطان بن علي الوائلي (2025)</span>
+                            <div class="citation-box arabic">
+                                📚 الوائلي، سلطان بن علي (2025). 'مفهوم شخصي للتحول الرقمي في الإدارة المدرسية'. مخطوطة غير منشورة، مدرسة محمد بن سليمان الغافري، سلطنة عمان.
+                            </div>
+                        </div>
                     </div>
-                    <!-- وزارة التربية والتعليم عمان 2024 -->
-                    <div class="definition-item definition-trigger" data-citation="وزارة التربية والتعليم، سلطنة عمان (2024). 'الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس'. الوثيقة الوطنية للتحول الرقمي في التعليم، مسقط، سلطنة عمان. (وثيقة حكومية منشورة)">
-                        <div class="definition-text">"التحول الرقمي في الإدارة المدرسية هو توظيف متكامل ومنهجي للتقنيات الرقمية لتحسين جودة العمليات التعليمية والإدارية، وتعزيز ثقافة الابتكار، وتمكين المتعلمين والمعلمين في بيئة تعليمية تفاعلية آمنة."</div>
-                        <span class="definition-source">- وزارة التربية والتعليم (عمان، 2024)</span>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- هيئة تقنية المعلومات 2023 -->
-                    <div class="definition-item definition-trigger" data-citation="هيئة تقنية المعلومات، سلطنة عمان (2023). 'إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي'. مسقط، سلطنة عمان. (الإصدار الأول، وثيقة وطنية)">
-                        <div class="definition-text">"التمكين الرقمي في القطاع التعليمي هو عملية دمج البنى التحتية التقنية والأنظمة المعلوماتية لخلق بيئة رقمية متكاملة تتيح الوصول للخدمات الإدارية والتعليمية بكفاءة وشفافية."</div>
-                        <span class="definition-source">- هيئة تقنية المعلومات (عمان، 2023)</span>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- سلطان الوائلي 2025 -->
-                    <div class="definition-item my-definition definition-trigger" data-citation="الوائلي، سلطان بن علي (2025). 'مفهوم شخصي للتحول الرقمي في الإدارة المدرسية'. مخطوطة غير منشورة، مدرسة محمد بن سليمان الغافري، سلطنة عمان.">
-                        <div class="definition-text">"التحول الرقمي في الإدارة المدرسية هو نقلة نوعية شاملة تعيد تشكيل الهيكل الإداري والمدرسي بأكمله، لخلق بيئة تفاعلية ذكية تركز على المتعلم وتواكب متطلبات العصر الرقمي."</div>
-                        <span class="definition-source">- سلطان بن علي الوائلي (2025)</span>
-                        <div class="citation-tooltip"></div>
+                    
+                    <div style="background:var(--gradient-1); padding:25px; border-radius:45px; margin-top:20px;">
+                        <h3 style="color:var(--secondary); font-size:28px;">الأهداف الرئيسية</h3>
+                        <ul style="list-style:none; margin-top:15px;">
+                            <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> ميكنة الإجراءات الروتينية</li>
+                            <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> تعزيز كفاءة اتخاذ القرار</li>
+                            <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> خلق بيئة مدرسية تفاعلية</li>
+                        </ul>
                     </div>
                 </div>
-                <div style="background:var(--gradient-1); padding:25px; border-radius:45px; margin-top:20px;">
-                    <h3 style="color:var(--secondary); font-size:28px;">الأهداف الرئيسية</h3>
-                    <ul style="list-style:none; margin-top:15px;">
-                        <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> ميكنة الإجراءات الروتينية</li>
-                        <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> تعزيز كفاءة اتخاذ القرار</li>
-                        <li style="font-size:22px; margin:15px 0; color:white;"><i class="fas fa-check-circle" style="color:var(--secondary); margin-left:10px;"></i> خلق بيئة مدرسية تفاعلية</li>
-                    </ul>
-                </div>
-            </div></div>
+            </div>
 
             <!-- SLIDE 4: التحديات والفرص + رؤية الوزارة -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">التحديات والفرص</h2>
-                <div class="comparison-container">
-                    <div class="comparison-box challenges">
-                        <div class="box-title"><i class="fas fa-exclamation-triangle"></i> التحديات</div>
-                        <ul class="comparison-list">
-                            <li><i class="fas fa-times-circle"></i> مقاومة التغيير من بعض الكوادر البشرية</li>
-                            <li><i class="fas fa-wifi"></i> نقص البنية التحتية التقنية</li>
-                            <li><i class="fas fa-shield-alt"></i> صعوبة تأمين وحماية البيانات</li>
-                            <li><i class="fas fa-chalkboard-teacher"></i> الحاجة المستمرة للتدريب</li>
-                        </ul>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2 class="section-header">التحديات والفرص</h2>
+                    <div class="comparison-container">
+                        <div class="comparison-box challenges">
+                            <div class="box-title"><i class="fas fa-exclamation-triangle"></i> التحديات</div>
+                            <ul class="comparison-list">
+                                <li><i class="fas fa-times-circle"></i> مقاومة التغيير من بعض الكوادر البشرية</li>
+                                <li><i class="fas fa-wifi"></i> نقص البنية التحتية التقنية</li>
+                                <li><i class="fas fa-shield-alt"></i> صعوبة تأمين وحماية البيانات</li>
+                                <li><i class="fas fa-chalkboard-teacher"></i> الحاجة المستمرة للتدريب</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-box opportunities">
+                            <div class="box-title"><i class="fas fa-lightbulb"></i> الفرص</div>
+                            <ul class="comparison-list">
+                                <li><i class="fas fa-chart-line"></i> رفع كفاءة الإداريين والمعلمين</li>
+                                <li><i class="fas fa-brain"></i> تحسين جودة التعليم والتعلم</li>
+                                <li><i class="fas fa-handshake"></i> تعزيز الشفافية والتواصل</li>
+                                <li><i class="fas fa-clock"></i> توفير الوقت والجهد</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="comparison-box opportunities">
-                        <div class="box-title"><i class="fas fa-lightbulb"></i> الفرص</div>
-                        <ul class="comparison-list">
-                            <li><i class="fas fa-chart-line"></i> رفع كفاءة الإداريين والمعلمين</li>
-                            <li><i class="fas fa-brain"></i> تحسين جودة التعليم والتعلم</li>
-                            <li><i class="fas fa-handshake"></i> تعزيز الشفافية والتواصل</li>
-                            <li><i class="fas fa-clock"></i> توفير الوقت والجهد</li>
-                        </ul>
+                    
+                    <div class="vision-box">
+                        <div class="vision-title">رؤية وزارة التربية والتعليم: التعليم المدمج بالتقانة</div>
+                        <div class="vision-text">
+                            "نسعى لتمكين رقمي شامل وتوظيف تقني متقن لتجويد بيئة العلم والعمل، وصنع جيل مبدع علمياً مجيد رقمياً، من خلال دمج التقنيات الحديثة في المناهج والممارسات الإدارية." <br> (وزارة التربية والتعليم، 2024)
+                            <br><br>
+                            <strong>رؤية المدرسة المشتقة:</strong> "من هنا، اشتقت مدرسة محمد بن سليمان الغافري رؤيتها نحو تمكين رقمي شامل، يهدف إلى توظيف تقني متقن لتجويد بيئة العلم والعمل، وصنع جيل مبدع علمياً مجيد رقمياً، من خلال مبادرات مثل منصة 'تدبير'."
+                        </div>
                     </div>
                 </div>
-                <!-- رؤية الوزارة واضحة -->
-                <div class="vision-box">
-                    <div class="vision-title">رؤية وزارة التربية والتعليم: التعليم المدمج بالتقانة</div>
-                    <div class="vision-text">
-                        "نسعى لتمكين رقمي شامل وتوظيف تقني متقن لتجويد بيئة العلم والعمل، وصنع جيل مبدع علمياً مجيد رقمياً، من خلال دمج التقنيات الحديثة في المناهج والممارسات الإدارية." <br> (وزارة التربية والتعليم، 2024)
-                        <br><br>
-                        <strong>رؤية المدرسة المشتقة:</strong> "من هنا، اشتقت مدرسة محمد بن سليمان الغافري رؤيتها نحو تمكين رقمي شامل، يهدف إلى توظيف تقني متقن لتجويد بيئة العلم والعمل، وصنع جيل مبدع علمياً مجيد رقمياً، من خلال مبادرات مثل منصة 'تدبير'."
-                    </div>
-                </div>
-            </div></div>
+            </div>
 
             <!-- SLIDE 5: منصة تدبير -->
-            <div class="swiper-slide"><div class="slide-content">
-                <div class="platform-universe">
-                    <h2 style="font-size:54px; color:white;">منصة تدبير</h2>
-                    <div style="color:var(--secondary); font-size:24px;">نموذج ملموس للتحول الرقمي</div>
-                    <a href="https://sultanalwaeli.github.io/7211/" target="_blank" style="display:inline-block; background:white; color:var(--primary-dark); padding:15px 40px; border-radius:60px; font-size:24px; font-weight:900; margin:25px 0; border:3px solid var(--secondary);">استكشف المنصة</a>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <div class="platform-universe">
+                        <h2 style="font-size:54px; color:white;">منصة تدبير</h2>
+                        <div style="color:var(--secondary); font-size:24px;">نموذج ملموس للتحول الرقمي</div>
+                        <a href="https://sultanalwaeli.github.io/7211/" target="_blank" style="display:inline-block; background:white; color:var(--primary-dark); padding:15px 40px; border-radius:60px; font-size:24px; font-weight:900; margin:25px 0; border:3px solid var(--secondary); text-decoration:none;">استكشف المنصة</a>
+                    </div>
                 </div>
-            </div></div>
+            </div>
 
-            <!-- SLIDE 6: المقترحات (كانت سابقاً الدراسات) -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">مقترحات التطوير</h2>
-                <div class="timeline-premium">
-                    <div class="timeline-node"><span class="year">١</span><span>الثقافة</span></div>
-                    <div class="timeline-node"><span class="year">٢</span><span>الكوادر</span></div>
-                    <div class="timeline-node"><span class="year">٣</span><span>البنية</span></div>
-                    <div class="timeline-node"><span class="year">٤</span><span>المبادرات</span></div>
-                    <div class="timeline-node"><span class="year">٥</span><span>الشراكة</span></div>
+            <!-- SLIDE 6: المقترحات -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2 class="section-header">مقترحات التطوير</h2>
+                    <div class="timeline-premium">
+                        <div class="timeline-node"><span style="font-size:24px; font-weight:900;">١</span><span>نشر الثقافة</span></div>
+                        <div class="timeline-node"><span style="font-size:24px; font-weight:900;">٢</span><span>تأهيل الكوادر</span></div>
+                        <div class="timeline-node"><span style="font-size:24px; font-weight:900;">٣</span><span>تطوير البنية</span></div>
+                        <div class="timeline-node"><span style="font-size:24px; font-weight:900;">٤</span><span>المبادرات</span></div>
+                        <div class="timeline-node"><span style="font-size:24px; font-weight:900;">٥</span><span>الشراكة</span></div>
+                    </div>
                 </div>
-            </div></div>
+            </div>
 
             <!-- SLIDE 7: الشكر -->
-            <div class="swiper-slide"><div class="slide-content text-center">
-                <i class="fas fa-heart heart-icon"></i>
-                <h2 class="thanks-title">شكراً لحسن استماعكم</h2>
-            </div></div>
+            <div class="swiper-slide">
+                <div class="slide-content text-center">
+                    <i class="fas fa-heart heart-icon"></i>
+                    <h2 class="thanks-title">شكراً لحسن استماعكم</h2>
+                </div>
+            </div>
 
-            <!-- SLIDE 8: المراجع الكاملة (عند الضغط ينبثق التوثيق) -->
-            <div class="swiper-slide"><div class="slide-content">
-                <h2 class="section-header">المراجع الكاملة</h2>
-                <div class="references-galaxy">
-                    <!-- المرجع 1: OECD 2025 -->
-                    <div class="star-reference definition-trigger" data-citation="Boeskens, L. & Meyer, K. (2025). Policies for the digital transformation of school education: Evidence from the Policy Survey on School Education in the Digital Age. OECD Education Working Papers, No. 328. Paris: OECD Publishing. https://doi.org/10.1787/19939019">
-                        <i class="fas fa-file-contract"></i>
-                        <h3>OECD (2025)</h3>
-                        <p>Working Paper No. 328</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- المرجع 2: OECD 2023 -->
-                    <div class="star-reference definition-trigger" data-citation="OECD (2023). Digital Education Outlook 2023: Towards an Effective Digital Transformation. Paris: OECD Publishing. Retrieved from: https://www.oecd.org/en/publications/country-digital-education-ecosystems-and-governance_906134d4-en.html">
-                        <i class="fas fa-book"></i>
-                        <h3>OECD (2023)</h3>
-                        <p>Digital Education Outlook</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- المرجع 3: وزارة التربية والتعليم عمان 2024 -->
-                    <div class="star-reference definition-trigger" data-citation="وزارة التربية والتعليم، سلطنة عمان (2024). الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس. الوثيقة الوطنية للتحول الرقمي في التعليم، مسقط، سلطنة عمان.">
-                        <i class="fas fa-flag"></i>
-                        <h3>وزارة التعليم (2024)</h3>
-                        <p>رؤية عمان 2040</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- المرجع 4: هيئة تقنية المعلومات عمان 2023 -->
-                    <div class="star-reference definition-trigger" data-citation="هيئة تقنية المعلومات، سلطنة عمان (2023). إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي. مسقط، سلطنة عمان.">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>هيئة تقنية المعلومات (2023)</h3>
-                        <p>الحوكمة الرقمية</p>
-                        <div class="citation-tooltip"></div>
-                    </div>
-                    <!-- المرجع 5: سلطان الوائلي 2025 -->
-                    <div class="star-reference definition-trigger" data-citation="الوائلي، سلطان بن علي (2025). مفهوم شخصي للتحول الرقمي في الإدارة المدرسية. مخطوطة غير منشورة، مدرسة محمد بن سليمان الغافري، سلطنة عمان.">
-                        <i class="fas fa-user-graduate"></i>
-                        <h3>سلطان الوائلي (2025)</h3>
-                        <p>مفهوم شخصي</p>
-                        <div class="citation-tooltip"></div>
+            <!-- SLIDE 8: المراجع الكاملة -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2 class="section-header">المراجع الكاملة</h2>
+                    <div class="references-galaxy">
+                        <!-- المرجع 1: OECD 2025 -->
+                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                            <i class="fas fa-file-contract"></i>
+                            <h3>OECD (2025)</h3>
+                            <p>Working Paper No. 328</p>
+                            <div class="citation-box">
+                                📚 Boeskens, L. & Meyer, K. (2025). Policies for the digital transformation of school education: Evidence from the Policy Survey on School Education in the Digital Age. OECD Education Working Papers, No. 328. Paris: OECD Publishing. https://doi.org/10.1787/19939019
+                            </div>
+                        </div>
+                        
+                        <!-- المرجع 2: OECD 2023 -->
+                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                            <i class="fas fa-book"></i>
+                            <h3>OECD (2023)</h3>
+                            <p>Digital Education Outlook</p>
+                            <div class="citation-box">
+                                📚 OECD (2023). Digital Education Outlook 2023: Towards an Effective Digital Transformation. Paris: OECD Publishing. Retrieved from: https://www.oecd.org/en/publications/country-digital-education-ecosystems-and-governance_906134d4-en.html
+                            </div>
+                        </div>
+                        
+                        <!-- المرجع 3: وزارة التربية والتعليم عمان 2024 -->
+                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                            <i class="fas fa-flag"></i>
+                            <h3>وزارة التعليم (2024)</h3>
+                            <p>رؤية عمان 2040</p>
+                            <div class="citation-box arabic">
+                                📚 وزارة التربية والتعليم، سلطنة عمان (2024). الخطة الاستراتيجية للتعليم 2040: تمكين التعلم الرقمي والابتكار في المدارس. الوثيقة الوطنية للتحول الرقمي في التعليم، مسقط، سلطنة عمان.
+                            </div>
+                        </div>
+                        
+                        <!-- المرجع 4: هيئة تقنية المعلومات عمان 2023 -->
+                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                            <i class="fas fa-network-wired"></i>
+                            <h3>هيئة تقنية المعلومات (2023)</h3>
+                            <p>الحوكمة الرقمية</p>
+                            <div class="citation-box arabic">
+                                📚 هيئة تقنية المعلومات، سلطنة عمان (2023). إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي. مسقط، سلطنة عمان.
+                            </div>
+                        </div>
+                        
+                        <!-- المرجع 5: سلطان الوائلي 2025 -->
+                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>سلطان الوائلي (2025)</h3>
+                            <p>مفهوم شخصي</p>
+                            <div class="citation-box arabic">
+                                📚 الوائلي، سلطان بن علي (2025). مفهوم شخصي للتحول الرقمي في الإدارة المدرسية. مخطوطة غير منشورة، مدرسة محمد بن سليمان الغافري، سلطنة عمان.
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
 
             <!-- SLIDE 9: الخاتمة -->
-            <div class="swiper-slide"><div class="slide-content text-center">
-                <i class="fas fa-star" style="font-size:80px; color:var(--secondary);"></i>
-                <h2 style="font-size:48px; color:var(--primary);">معاً نحو مستقبل رقمي</h2>
-                <p style="font-size:24px;">سلطان بن علي الوائلي - 2026</p>
-            </div></div>
+            <div class="swiper-slide">
+                <div class="slide-content text-center">
+                    <i class="fas fa-star" style="font-size:80px; color:var(--secondary);"></i>
+                    <h2 style="font-size:48px; color:var(--primary);">معاً نحو مستقبل رقمي</h2>
+                    <p style="font-size:24px;">سلطان بن علي الوائلي - 2026</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({disable: window.innerWidth < 768});
+        // إعداد Swiper
         const swiper = new Swiper('.presentation-swiper', {
-            speed:500, spaceBetween: window.innerWidth<768?8:25,
-            navigation:{nextEl:'#next-slide', prevEl:'#prev-slide'},
-            on:{slideChange:updateProgress, init:updateProgress}
+            speed: 500,
+            spaceBetween: 25,
+            navigation: {
+                nextEl: '#next-slide',
+                prevEl: '#prev-slide',
+            },
+            on: {
+                slideChange: updateProgress,
+                init: updateProgress
+            }
         });
-        function updateProgress(){
-            let c=swiper.activeIndex+1, t=swiper.slides.length;
-            document.getElementById('current-slide').textContent=c.toString().padStart(2,'0');
-            document.getElementById('progress-fill').style.width=(c/t)*100+'%';
+        
+        // تحديث عداد الشرائح وشريط التقدم
+        function updateProgress() {
+            let current = swiper.activeIndex + 1;
+            let total = swiper.slides.length;
+            document.getElementById('current-slide').textContent = current.toString().padStart(2, '0');
+            document.getElementById('progress-fill').style.width = (current / total) * 100 + '%';
         }
-        window.addEventListener('resize',()=>swiper.update());
-
-        // آلية عرض التوثيق عند الضغط (تعمل لجميع العناصر)
-        document.querySelectorAll('.definition-trigger').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // إغلاق أي نوافذ مفتوحة أخرى
-                document.querySelectorAll('.definition-trigger').forEach(el => {
-                    if(el !== this) el.classList.remove('active');
-                });
-                this.classList.toggle('active');
-                // تعبئة محتوى التوثيق إذا كان فارغاً
-                const tooltip = this.querySelector('.citation-tooltip');
-                if(tooltip && tooltip.innerHTML.trim() === '') {
-                    tooltip.innerHTML = this.getAttribute('data-citation') || 'لا يوجد توثيق مفصل';
-                }
-            });
+        
+        // تحديث عند تغيير حجم النافذة
+        window.addEventListener('resize', () => {
+            swiper.update();
         });
-        // إغلاق عند الضغط خارجها
+
+        // إغلاق التوثيق عند النقر خارج العناصر
         document.addEventListener('click', function(e) {
-            if(!e.target.closest('.definition-trigger')) {
-                document.querySelectorAll('.definition-trigger').forEach(el => el.classList.remove('active'));
+            if (!e.target.closest('.definition-item') && !e.target.closest('.ref-card')) {
+                document.querySelectorAll('.definition-item, .ref-card').forEach(el => {
+                    el.classList.remove('active');
+                });
             }
         });
 
-        // Canvas background
-        const canvas = document.getElementById('canvas-bg'), ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let particles = [], colors = ['#0A2472', '#1E4A8A', '#E6B91E', '#00A896'];
-        for(let i=0; i<40; i++) particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, radius:Math.random()*2+1, color:colors[Math.floor(Math.random()*colors.length)], vx:(Math.random()-0.5)*0.2, vy:(Math.random()-0.5)*0.2});
-        function draw(){requestAnimationFrame(draw); ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{ctx.beginPath(); ctx.arc(p.x,p.y,p.radius,0,Math.PI*2); ctx.fillStyle=p.color; ctx.fill(); p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>canvas.width)p.vx*=-1; if(p.y<0||p.y>canvas.height)p.vy*=-1;});}
-        draw();
-        window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+        // Canvas background للجسيمات المتحركة
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        
+        let particles = [];
+        const colors = ['#0A2472', '#1E4A8A', '#E6B91E', '#00A896'];
+        
+        for(let i = 0; i < 40; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                vx: (Math.random() - 0.5) * 0.2,
+                vy: (Math.random() - 0.5) * 0.2
+            });
+        }
+        
+        function drawParticles() {
+            requestAnimationFrame(drawParticles);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+                
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            });
+        }
+        
+        drawParticles();
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+        });
     </script>
 </body>
 </html>

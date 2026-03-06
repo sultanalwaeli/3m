@@ -315,6 +315,184 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* أنماط النوافذ المنبثقة الجديدة */
+        .info-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 40px;
+            padding: 30px;
+            position: relative;
+            border: 4px solid var(--secondary);
+            box-shadow: var(--shadow-lg);
+            animation: modalPop 0.3s ease;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid var(--secondary);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--secondary);
+            color: var(--primary-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-left: 40px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .modal-section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-section-title i {
+            color: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-right: 30px;
+            margin-bottom: 20px;
+            border-right: 3px solid var(--secondary);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--secondary);
+        }
+
+        .timeline-year {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .timeline-place {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .award-item {
+            background: linear-gradient(145deg, #f0f5ff, #ffffff);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .award-year {
+            display: inline-block;
+            background: var(--primary-dark);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .award-desc {
+            font-size: 18px;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .clickable-info {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clickable-info:hover {
+            transform: scale(1.05);
+            color: var(--secondary) !important;
+        }
+
         /* رؤية الوزارة */
         .vision-box {
             background: linear-gradient(145deg, #0a2a5a, #123e7a);
@@ -387,9 +565,8 @@
             margin-bottom: 10px;
         }
 
-        .ref-card.active {
-            border-color: var(--secondary);
-            background: #f5f9ff;
+        .ref-card.active .citation-box {
+            display: block;
         }
 
         /* مقارنة التحديات والفرص */
@@ -666,6 +843,10 @@
             .profile-id-card span {
                 font-size: 18px;
             }
+            
+            .modal-title {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -687,6 +868,99 @@
     <div class="nav-arrows">
         <div class="nav-arrow" id="prev-slide"><i class="fas fa-arrow-right"></i></div>
         <div class="nav-arrow" id="next-slide"><i class="fas fa-arrow-left"></i></div>
+    </div>
+
+    <!-- النافذة المنبثقة للشهادات -->
+    <div class="info-modal" id="certificatesModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('certificatesModal')">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">الشهادات العلمية</h2>
+            
+            <div class="modal-section">
+                <div class="timeline-item">
+                    <div class="timeline-year">بكالوريوس تربية</div>
+                    <div class="timeline-desc">تخصص لغة عربية</div>
+                    <div class="timeline-place">جامعة السلطان قابوس - 2002</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <div class="timeline-item">
+                    <div class="timeline-year">دبلوم تأهيل تربوي</div>
+                    <div class="timeline-desc">الإدارة المدرسية الحديثة</div>
+                    <div class="timeline-place">جامعة نزوى - 2015</div>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <div class="timeline-item">
+                    <div class="timeline-year">شهادة مهنية</div>
+                    <div class="timeline-desc">القيادة التربوية</div>
+                    <div class="timeline-place">وزارة التربية والتعليم - 2020</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة للخبرة والتكريم (الجديدة) -->
+    <div class="info-modal" id="experienceModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal('experienceModal')">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">الخبرة العملية والتكريم</h2>
+            
+            <!-- الخبرة العملية -->
+            <div class="modal-section">
+                <div class="modal-section-title">
+                    <i class="fas fa-briefcase"></i>
+                    المسيرة المهنية
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">معلم لغة عربية</div>
+                    <div class="timeline-desc">مدرسة القارة للتعليم الأساسي</div>
+                    <div class="timeline-place">2002 - 2019</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">معلم أول لغة عربية</div>
+                    <div class="timeline-desc">مدرسة القارة للتعليم الأساسي</div>
+                    <div class="timeline-place">2019 - 2022</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">مساعد مدير مدرسة</div>
+                    <div class="timeline-desc">مدرسة محمد بن سليمان الغافري</div>
+                    <div class="timeline-place">2023 - حتى الآن</div>
+                </div>
+            </div>
+            
+            <!-- التكريم -->
+            <div class="modal-section">
+                <div class="modal-section-title">
+                    <i class="fas fa-trophy"></i>
+                    التكريم والجوائز
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-year">2009</div>
+                    <div class="award-desc">تكريم في يوم المعلم على مستوى محافظة الظاهرة</div>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-year">2014</div>
+                    <div class="award-desc">تكريم في مسابقة المحافظة على النظافة والصحة في البيئة المدرسية على مستوى محافظة الظاهرة</div>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-year">2022</div>
+                    <div class="award-desc">تكريم في يوم المعلم على مستوى محافظة الظاهرة</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- السلايدر الرئيسي -->
@@ -722,18 +996,20 @@
                                     </div>
                                 </div>
                                 
-                                <!-- الاسم مع تأثير الكتابة -->
+                                <!-- الاسم مع تأثير الكتابة (قابل للنقر) -->
                                 <div style="position:relative; display:inline-block;">
-                                    <div class="profile-name">
+                                    <div class="profile-name clickable-info" onclick="openModal('certificatesModal')" style="cursor: pointer;">
                                         سلطان بن علي الوائلي
+                                        <i class="fas fa-graduation-cap" style="font-size: 20px; margin-right: 10px;"></i>
                                     </div>
                                     <div class="profile-name-underline"></div>
                                 </div>
                                 
-                                <!-- المنصب مع أيقونة متحركة -->
-                                <div class="profile-title">
+                                <!-- المنصب مع أيقونة متحركة (قابل للنقر) -->
+                                <div class="profile-title clickable-info" onclick="openModal('experienceModal')" style="cursor: pointer;">
                                     <i class="fas fa-chalkboard-teacher"></i>
                                     <span>مساعد مدير مدرسة محمد بن سليمان الغافري</span>
+                                    <i class="fas fa-chevron-down" style="font-size: 16px;"></i>
                                 </div>
                                 
                                 <!-- الرقم الوظيفي بتصميم بطاقة ذكية -->
@@ -750,6 +1026,12 @@
                                     <i class="fas fa-cloud-upload-alt"></i>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <!-- تلميح للتفاعل -->
+                        <div style="margin-top: 20px; color: var(--primary-dark); font-size: 14px;">
+                            <i class="fas fa-hand-pointer" style="color: var(--secondary);"></i> 
+                            اضغط على الاسم لعرض الشهادات، أو على المنصب لعرض الخبرة والتكريم
                         </div>
                     </div>
                 </div>
@@ -786,7 +1068,7 @@
                     <h2 class="section-header">مفهوم التحول الرقمي</h2>
                     <div class="definitions-container">
                         <!-- تعريف التحول الرقمي – مؤسسة عبد الحميد شومان -->
-<div class="definition-item" onclick="this.classList.toggle('active')">
+<div class="definition-item" onclick="toggleDefinition(this)">
     
     <div class="definition-text">
         <strong>تعريف التحول الرقمي:</strong><br><br>
@@ -811,7 +1093,7 @@
 </div>
                         
                         <!-- وزارة التربية والتعليم عمان 2024 -->
-                        <div class="definition-item" onclick="this.classList.toggle('active')">
+                        <div class="definition-item" onclick="toggleDefinition(this)">
                             <div class="definition-text">"التحول الرقمي في الإدارة المدرسية هو توظيف متكامل ومنهجي للتقنيات الرقمية لتحسين جودة العمليات التعليمية والإدارية، وتعزيز ثقافة الابتكار، وتمكين المتعلمين والمعلمين في بيئة تعليمية تفاعلية آمنة."</div>
                             <span class="definition-source">- وزارة التربية والتعليم (عمان، 2024)</span>
                             <div class="citation-box arabic">
@@ -820,14 +1102,14 @@
                         </div>
                         
                         <!-- هيئة تقنية المعلومات 2023 -->
-                        <div class="definition-item" onclick="this.classList.toggle('active')">
+                        <div class="definition-item" onclick="toggleDefinition(this)">
                             <div class="definition-text">"التمكين الرقمي في القطاع التعليمي هو عملية دمج البنى التحتية التقنية والأنظمة المعلوماتية لخلق بيئة رقمية متكاملة تتيح الوصول للخدمات الإدارية والتعليمية بكفاءة وشفافية."</div>
                             <span class="definition-source">- هيئة تقنية المعلومات (عمان، 2023)</span>
                             <div class="citation-box arabic">
                                 📚 هيئة تقنية المعلومات، سلطنة عمان (2023). 'إطار الحوكمة الرقمية للمؤسسات التعليمية: دليل تطبيق معايير التمكين الرقمي'. مسقط، سلطنة عمان.
                             </div>
                         </div>
-   <div class="definition-item my-definition" onclick="this.classList.toggle('active')">
+   <div class="definition-item my-definition" onclick="toggleDefinition(this)">
 
     <h3 style="margin-bottom:15px; color:var(--primary);">
         التحول الرقمي في الإدارة المدرسية: من المفهوم إلى التطبيق (نموذج تدبير)
@@ -1030,7 +1312,7 @@
                     <h2 class="section-header">المراجع الكاملة</h2>
                     <div class="references-galaxy">
 <!-- المرجع 1: مؤسسة عبد الحميد شومان -->
-<div class="ref-card" onclick="this.classList.toggle('active')">
+<div class="ref-card" onclick="toggleRef(this)">
     <i class="fas fa-file-contract"></i>
     <h3>مؤسسة عبد الحميد شومان (2024)</h3>
     <p>مقالة معرفية – التحول الرقمي في التعليم</p>
@@ -1040,7 +1322,7 @@
 </div>
                         
                         <!-- المرجع 2: OECD 2023 -->
-                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                        <div class="ref-card" onclick="toggleRef(this)">
                             <i class="fas fa-book"></i>
                             <h3>OECD (2023)</h3>
                             <p>Digital Education Outlook</p>
@@ -1050,7 +1332,7 @@
                         </div>
                         
                         <!-- المرجع 3: وزارة التربية والتعليم عمان 2024 -->
-                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                        <div class="ref-card" onclick="toggleRef(this)">
                             <i class="fas fa-flag"></i>
                             <h3>وزارة التعليم (2024)</h3>
                             <p>رؤية عمان 2040</p>
@@ -1060,7 +1342,7 @@
                         </div>
                         
                         <!-- المرجع 4: هيئة تقنية المعلومات عمان 2023 -->
-                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                        <div class="ref-card" onclick="toggleRef(this)">
                             <i class="fas fa-network-wired"></i>
                             <h3>هيئة تقنية المعلومات (2023)</h3>
                             <p>الحوكمة الرقمية</p>
@@ -1069,7 +1351,7 @@
                             </div>
                         </div>
                         <!-- المرجع 5: التحديات – مجلة علمية -->
-<div class="ref-card" onclick="this.classList.toggle('active')">
+<div class="ref-card" onclick="toggleRef(this)">
     <i class="fas fa-book"></i>
     <h3>مجلة الدراسات التربوية (2023)</h3>
     <p>التحديات والمعوقات في التحول الرقمي</p>
@@ -1079,7 +1361,7 @@
 </div>
 
 <!-- المرجع 6: الفرص – عرض Prezi -->
-<div class="ref-card" onclick="this.classList.toggle('active')">
+<div class="ref-card" onclick="toggleRef(this)">
     <i class="fas fa-lightbulb"></i>
     <h3>عرض تعليمي – Prezi (د.ت.)</h3>
     <p>الفرص والفوائد في التحول الرقمي</p>
@@ -1089,7 +1371,7 @@
 </div>
                         
                         <!-- المرجع 7: سلطان الوائلي 2025 -->
-                        <div class="ref-card" onclick="this.classList.toggle('active')">
+                        <div class="ref-card" onclick="toggleRef(this)">
                             <i class="fas fa-user-graduate"></i>
                             <h3>سلطان الوائلي (2025)</h3>
                             <p>مفهوم شخصي</p>
@@ -1147,14 +1429,51 @@
             swiper.update();
         });
 
-        // إغلاق التوثيق عند النقر خارج العناصر
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.definition-item') && !e.target.closest('.ref-card')) {
-                document.querySelectorAll('.definition-item, .ref-card').forEach(el => {
-                    el.classList.remove('active');
-                });
+        // دوال فتح وإغلاق النوافذ المنبثقة
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // إغلاق النوافذ المنبثقة عند الضغط خارج المحتوى
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('info-modal')) {
+                e.target.classList.remove('active');
             }
         });
+
+        // دالة لتبديل عرض التعريفات (بدون استخدام toggle class الذي يسبب المشكلة)
+        function toggleDefinition(element) {
+            // إزالة الفئة active من جميع التعريفات
+            document.querySelectorAll('.definition-item').forEach(el => {
+                if (el !== element) {
+                    el.classList.remove('active');
+                }
+            });
+            // تبديل الفئة active للعنصر الحالي
+            element.classList.toggle('active');
+        }
+
+        // دالة لتبديل عرض المراجع
+        function toggleRef(element) {
+            // إزالة الفئة active من جميع المراجع
+            document.querySelectorAll('.ref-card').forEach(el => {
+                if (el !== element) {
+                    el.classList.remove('active');
+                }
+            });
+            // تبديل الفئة active للعنصر الحالي
+            element.classList.toggle('active');
+        }
 
         // Canvas background للجسيمات المتحركة
         const canvas = document.getElementById('canvas-bg');
@@ -1215,19 +1534,13 @@
                 title.style.transform = 'translateY(0)';
             }, 300);
         }
+
+        // إضافة معالج للأحداث لمنع انتشار النقرات
+        document.querySelectorAll('.definition-item, .ref-card').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
